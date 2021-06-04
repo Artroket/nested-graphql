@@ -1,0 +1,45 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CreateFilmDto {
+  id: ID!
+  name: String!
+  watched: Boolean!
+  genre: String!
+  rate: Int
+  pRate: String!
+}
+
+type meta {
+  count: Int!
+  pageSize: Int!
+  page: Int!
+}
+
+type FilmsResponse {
+  data: [CreateFilmDto!]!
+  meta: meta!
+}
+
+type Query {
+  films(limit: Int!, offset: Int!): FilmsResponse!
+  user: String!
+  numberOfFilms: Float!
+}
+
+type Mutation {
+  createFilm(input: InputFilm!): CreateFilmDto!
+  deleteFilm(name: String!): CreateFilmDto!
+}
+
+input InputFilm {
+  name: String!
+  watched: Boolean!
+  genre: String!
+  rate: Int
+}
+
+type Subscription {
+  goodFilmAdded(rate: Float!): CreateFilmDto
+}
